@@ -1,4 +1,4 @@
-let arr = ['a', 'b', 'c', 'd', 'e', 'f', 'h', 'i']
+let arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 
 function Node() { //创建结点(使用构造函数模式创建对象,优点：指定对象的类型)
   this.data = ''
@@ -22,13 +22,13 @@ function reCreateBinaryTree(node, i) {
     let childNode = new Node()
     childNode.data = arr[leftIndex] //给当前孩子结点赋值
     node.left = childNode
-    createBinaryTree(childNode, leftIndex)
+    reCreateBinaryTree(childNode, leftIndex)
   }
   if (rightIndex < arr.length) {
     let childNode = new Node()
     childNode.data = arr[rightIndex] //给当前孩子结点赋值
     node.right = childNode
-    createBinaryTree(childNode, rightIndex)
+    reCreateBinaryTree(childNode, rightIndex)
   }
 }
 
@@ -56,14 +56,43 @@ function nonReCreateBinaryTree() {
     index++
   }
 }
-/*打印二叉树*/
-function printTree(t) {
+
+/*递归遍历*/
+/*先序遍历二叉树（根左右）*/
+function preOrderTree(t) {
   if (t == null) {
     return;
   } else {
-    printTree(t.left);
     console.log(t.data);
-    printTree(t.right)
+    preOrderTree(t.left);
+    preOrderTree(t.right)
+
   }
 }
+/*中序遍历二叉树（左根右）*/
+function inOrderTree(t) {
+  if (t == null) {
+    return;
+  } else {
+    inOrderTree(t.left);
+    console.log(t.data);
+    inOrderTree(t.right)
+
+  }
+}
+/*后序遍历二叉树（左右根）*/
+function postOrderTree(t) {
+  if (t == null) {
+    return;
+  } else {
+    postOrderTree(t.left);
+    postOrderTree(t.right)
+    console.log(t.data);
+  }
+}
+
+reCreateBinaryTree(root, 0) //构建二叉树
+preOrderTree(root)
+inOrderTree(root)
+postOrderTree(root)
 
