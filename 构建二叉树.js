@@ -57,7 +57,8 @@ function nonReCreateBinaryTree() {
   }
 }
 
-/*递归遍历*/
+/*递归遍历二叉树*/
+
 /*先序遍历二叉树（根左右）*/
 function preOrderTree(t) {
   if (t == null) {
@@ -92,7 +93,27 @@ function postOrderTree(t) {
 }
 
 reCreateBinaryTree(root, 0) //构建二叉树
-preOrderTree(root)
-inOrderTree(root)
-postOrderTree(root)
+// preOrderTree(root)
+// inOrderTree(root)
+// postOrderTree(root)
 
+/*非递归遍历二叉树
+* 1. 用数组实现一个栈push()和 pop()
+* 2. 如果该结点的右结点不为空，则将其右结点放入栈中，左结点不为空，则继续向左结点遍历
+* 3. 回退时从栈中取出右结点数据
+*/
+/*先序遍历二叉树（根左右）*/
+function nonRpreOrderTree(t) {
+  let stack = new Array()
+  while (t) {
+    console.log(t.data)      //根节点
+    if (t.right) {
+      stack.push(t.right)
+    } else if (t.right) {
+      t = t.left  //如果该结点的左结点不为空继续向左子树遍历
+    } else {
+      stack.pop()
+    }
+  }
+}
+nonRpreOrderTree(root)
