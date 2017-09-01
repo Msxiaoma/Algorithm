@@ -116,4 +116,32 @@ function nonRpreOrderTree(t) {
     }
   }
 }
-nonRpreOrderTree(root)
+// nonRpreOrderTree(root)
+
+
+//先序和中序重构二叉树
+function treeNode(data) {
+  this.data = data
+  this.left = null
+  this.right = null
+}
+
+function reConstructBinaryTree(pre, vin) {
+  if (pre.length == 0 || vin.length == 0){
+    return null
+  }
+  let preLeft = [],preRight = [], vinLeft = [],vinRight = []
+  let binaryNode = new treeNode(pre[0])    //根据先序构建根节点
+  let index = vin.indexOf(pre[0])         //返回根结点在中序序列中所在的位置
+  preLeft = pre.slice(1,index + 1)       //根据根结点在中序序列中的位置划分先序序列
+  preRight = pre.slice(index+1)
+  vinLeft =  vin.slice(0,index)
+  vinRight = vin.slice(index+1)
+  binaryNode.left = reConstructBinaryTree(preLeft,vinLeft)
+  binaryNode.right = reConstructBinaryTree(preRight,vinRight)
+  return binaryNode
+}
+
+let pre = [1, 2, 4, 7, 3, 5, 6, 8]
+let vin = [4, 7, 2, 1, 5, 3, 8, 6]
+reConstructBinaryTree(pre, vin)
