@@ -7,10 +7,9 @@ function flatDeep(arr, d = 1) {
     if(d <= 0) {
         return arr.slice(); 
     }
-    let result = arr.reduce((sum, cur) => {
+    return arr.reduce((sum, cur) => {
         return sum.concat(Array.isArray(cur) ? flatDeep(cur, d - 1) : cur);
     }, []) // 此处的 [] 是reduce 执行 callback函数的初始值，如果没有初始值，默认为第一个参数
-    return result;
 };
 
 
