@@ -8,7 +8,6 @@ function debounce(fn, seconds){
      )
     timer = setTimeout(() => {
       fn.apply(this, arugements);
-      clearTimeout(timer);
     }, seconds);
   }
 }
