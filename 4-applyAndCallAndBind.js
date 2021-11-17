@@ -32,21 +32,17 @@ function callFunc(context, ...args) {
 }
 
 // 返回一个函数
-function bindFunc(context) {
-    if(typeof this == 'function') {
-        throw new TypeError('error');
+function myBind(ctx, ...args) {
+    if(typeof this === 'function'){
+        throw new TypeError('error')
     }
-    const _this = this;
-    const args = [...arguments].slice(1); // bind 的参数
-
-    return function T() {
-        // 1. 返回的函数被用作了构建函数
-        if(_this instanceof T) { 
-            return new _this(...args, ...arguments); // arguments 为 T的参数
-        } 
-        //  2. 返回函数被用作普通函数
-        else { 
-             return _this.apply(context, args.concat(...arguments)) // 此处的 this 指调用 call 的函数
-        }
-    } ;
+   const _this = this;
+   return function T() {
+       if(ctx instanceof T) {   // 1. 返回的函数被用作了构建函数
+           return new _this(...args)
+       } else {  //  2. 返回函数被用作普通函数
+           _this.myApply(ctx, ...args)
+       }
+   }
 }
+
