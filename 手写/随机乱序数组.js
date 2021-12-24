@@ -13,9 +13,10 @@ function random(a) {
 function random(a) {
    let sum = a.length - 1
    while (sum) {
-       let index = Math.floor(Math.random() * sum);   // 一定要写分号！！！！
+       let index = Math.floor(Math.random() * sum)   // 一定要写分号！！！！
        [a[sum], a[index]] = [a[index], a[sum]]
        sum --
    }
    return a
 }
+

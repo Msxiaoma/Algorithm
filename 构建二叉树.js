@@ -1,7 +1,7 @@
 let arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 
 function Node() { //创建结点(使用构造函数模式创建对象,优点：指定对象的类型)
-  this.data = ''
+  this.val = ''
   this.left = null
   this.right = null
 }
@@ -13,22 +13,22 @@ function Node() { //创建结点(使用构造函数模式创建对象,优点：�
 * 4.递归创建右结点
 */
 let root = new Node() //创建根结点
-root.data = arr[0]
+root.val = arr[0]
 
 function reCreateBinaryTree(node, i) {
-  let leftIndex = 2 * i + 1 //左孩子结点索引
+  let leftIndex = 2 * i + 1 ;//左孩子结点索引
   let rightIndex = 2 * i + 2 //右孩子结点索引
   if (leftIndex < arr.length) {
-    let childNode = new Node()
-    childNode.data = arr[leftIndex] //给当前孩子结点赋值
-    node.left = childNode
-    reCreateBinaryTree(childNode, leftIndex)
+    let childNode = new Node();
+    childNode.val = arr[leftIndex]; //给当前孩子结点赋值
+    node.left = childNode;
+    reCreateBinaryTree(childNode, leftIndex);
   }
   if (rightIndex < arr.length) {
-    let childNode = new Node()
-    childNode.data = arr[rightIndex] //给当前孩子结点赋值
-    node.right = childNode
-    reCreateBinaryTree(childNode, rightIndex)
+    let childNode = new Node();
+    childNode.val = arr[rightIndex]; //给当前孩子结点赋值
+    node.right = childNode;
+    reCreateBinaryTree(childNode, rightIndex);
   }
 }
 
