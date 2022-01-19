@@ -5,12 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./遍历/矩阵.js"></script>
+    <!-- <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> -->
+
+    <!-- Don't use this in production: -->
+    <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+    <!-- <script src="./手写/promise.js"></script> -->
+
 </head>
 <body>
-    hh
-   <script>
-       console.log(updateMatrix([[0,0,0],[0,1,0],[1,1,1]]))
-   </script>
+    <div id="root"></div>
+    <script>
+     function fn(){
+        console.log('this', this)  // window
+        var name = "hello"
+        var obj = {
+            name: 'aaa',
+            log: ()=> {
+                console.log('this', this)
+                console.log(this.name)
+            }
+        }
+        obj.log();  // 箭头函数，没有自己的 this，指的是外层的 this, 所以也是 window
+    }
+    fn()  // window
+
+
+    let number = 42;
+    function printNumber() {
+        console.log(number);
+    }
+    function log() {
+        let number = 54;
+        // function printNumber() {
+        //   console.log(number);
+        // }
+        printNumber();
+    }
+
+    log();
+
+    </script>
+     <!-- <script type="text/babel" src="React/event.js"></script> -->
 </body>
 </html>
+
+try{
+Promise.reject(1).then(res => {
+    console.log(res);
+    return 2;
+  })
+} catch(err) {
+    console.log('err', err)
+}

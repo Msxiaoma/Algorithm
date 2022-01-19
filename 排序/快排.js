@@ -5,16 +5,16 @@ function quickSort(arr, start, end) {
     let baseIndex = partition(arr, start, end);
     quickSort(arr, start, baseIndex - 1);
     quickSort(arr, baseIndex + 1, end);
+    return arr
 }
+
 
 function partition(arr, start, end) { // 核心，i 和 baseIndex首次时指向同一个元素的，i 是一直移动，baseIndex 只有 a[i] < baseValue 时才移动
     let baseValue = arr[end];
     let baseIndex = start;
     for(let i = start; i < end; i++) {
         if(arr[i] < baseValue) {
-            if( i != baseIndex) {
-                [arr[i], arr[baseIndex]] = [arr[baseIndex], arr[i]]
-            }
+            [arr[i], arr[baseIndex]] = [arr[baseIndex], arr[i]]
             baseIndex ++
         }
     }
@@ -23,6 +23,7 @@ function partition(arr, start, end) { // 核心，i 和 baseIndex首次时指向
     return baseIndex
 }
 
+console.log(quickSort([32,12,56,78,76,45,36], 0, 6))
 
 
 // [32,12,56,78,76,45,36]
