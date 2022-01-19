@@ -11,8 +11,8 @@ function applyFunc(context, args) {
     }
     context = context || window;
     let fn = Symbol(); // 给当前的对象，添加一个调用 apply 方法的方法
-    context[fn] = this
-    const res = args ? context.fn(...args) : context.fn();
+    context[fn] = this;
+    const res = content.fn(...args);
     delete context[fn];
     return res;
 }
@@ -32,13 +32,13 @@ function callFunc(context, ...args) {
 }
 
 // 返回一个函数
-function myBind(ctx, ...args) {
+function myBind(obj, ...args) {
     if(typeof this === 'function'){
         throw new TypeError('error')
     }
    const _this = this;
    return function T() {
-       if(ctx instanceof T) {   // 1. 返回的函数被用作了构建函数
+       if(obj instanceof T) {   // 1. 返回的函数被用作了构建函数
            return new _this(...args)
        } else {  //  2. 返回函数被用作普通函数
            _this.myApply(ctx, ...args)

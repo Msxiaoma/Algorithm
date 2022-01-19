@@ -5,12 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="./遍历/矩阵.js"></script>
+    <script src="./手写/promise.js"></script>
 </head>
 <body>
     hh
    <script>
-       console.log(updateMatrix([[0,0,0],[0,1,0],[1,1,1]]))
+    
+        const timeout = (time) => new Promise(resolve => {
+            setTimeout(resolve, time)
+        })
+
+
+        const scheduler = new Scheduler(2);
+
+        const addTask = (time, order) => {
+            scheduler.add(() => timeout(time)).then(() => console.log(order));
+        }
+
+        addTask(1000, '1')
+        addTask(500, '2')
+        addTask(300, '3')
+        addTask(400, '4')
    </script>
 </body>
 </html>

@@ -85,11 +85,10 @@ function inOrderTree(t) {
 function postOrderTree(t) {
   if (t == null) {
     return;
-  } else {
-    postOrderTree(t.left);
-    postOrderTree(t.right)
-    console.log(t.data);
-  }
+  } 
+  postOrderTree(t.left);
+  postOrderTree(t.right)
+  console.log(t.data);
 }
 
 reCreateBinaryTree(root, 0) //构建二叉树
