@@ -31,12 +31,6 @@ function promiseAllSettled(arr) {
     })
 }
 
-let a1 = function() {
-    return new Promise((resolve) => {
-
-    })
-}
-
 
 Promise.protoType.finally  = function() {
     return new Promise((resolve, reject) => {
