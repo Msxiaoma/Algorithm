@@ -1,21 +1,22 @@
-// promise
-// Promise.resolve().then(() => {
-//     Promise.resolve().then(() => {
-//         console.log(3);
-//     })
-//     console.log(1)
-// }).then(()=> {
-//     console.log(10)
-// })
+// promise 
+Promise.resolve().then(() => {
+    Promise.resolve().then(() => {
+        console.log(3);
+    })
+    console.log(1)
+}).then(()=> {
+    console.log(10)
+})
 
-// console.log(0);
+console.log(0);
 
-// Promise.resolve().then(() => {
-//     console.log(11)
-// }).then(()=> {
-//     console.log(12)
-// })
+Promise.resolve().then(() => {
+    console.log(11)
+}).then(()=> {
+    console.log(12)
+})
 
+// 0, 1, 11, 3 10, 12
 
 // 第一题
 

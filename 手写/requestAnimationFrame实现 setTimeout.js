@@ -33,11 +33,7 @@ function promiseAllSettled(arr) {
 
 
 Promise.protoType.finally  = function() {
-    return new Promise((resolve, reject) => {
-        resolve()
-    }, err => {
-        reject(err)
-    })
+    return g
 }
 
 let promiseFinally = function() {
