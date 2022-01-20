@@ -36,7 +36,6 @@
         task && task();
     }   
     sayHi() {
-        console.log('sayHi')
         this.tasks.push(() => {
             console.log(`Hi This is ${this.name}!`)
             this.next()
@@ -44,7 +43,6 @@
         return this
     }
     eat(something) {
-        console.log('eat')
         this.tasks.push(() => {
             console.log(`Eat ${something}!`)
             this.next()
@@ -52,7 +50,6 @@
         return this
     }
     sleep(time) {
-        console.log('sleep')
         this.tasks.push(() => {
             setTimeout(() => {
                 console.log(`Wake up after ${time}`)
@@ -62,7 +59,6 @@
         return this
     }
     sleepFirst(time) {
-        console.log('sleepFirst')
         this.tasks.unshift(() => {
             setTimeout(() => {
                 console.log(`Wake up after ${time}`)
