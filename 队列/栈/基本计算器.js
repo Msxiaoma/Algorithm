@@ -3,7 +3,7 @@
  * @return {number}
  */
 
-// 输入：s = "3+2*22+14"
+// 输入：s = "33+2*22+14"
 // 输出：7
 
 var calculate = function(s) {
@@ -16,6 +16,7 @@ var calculate = function(s) {
         if(s[i] !== ' ' && !isNaN(Number(s[i]))) {
             num = num * 10 + s[i].charCodeAt() - '0'.charCodeAt()
         }
+        // num = 3 , s[i] = 3, i
         if(isNaN(Number(s[i])) || i === s.length - 1) {
             switch (preSign) {
                 case '+':
