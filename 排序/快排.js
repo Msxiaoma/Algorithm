@@ -27,3 +27,27 @@ console.log(quickSort([32,12,56,78,76,45,36], 0, 6))
 
 
 // [32,12,56,78,76,45,36]
+
+// 找一个基准元素
+
+function quickSort(arr, start, end) {
+    if(start > end) {
+        return 
+    }
+    let baseIndex = getStandardIndex(arr, start, end);
+    quickSort(arr, start, baseIndex - 1);
+    quickSort(arr, baseIndex + 1, end);
+}
+
+function getStandardIndex(arr, start, end){
+    let baseIndex = start;
+    let baseValue = arr[end];
+    for(let i = 0; i < end; i++ ){
+        if(a[i] < baseValue) {
+            [arr[i], arr[baseIndex]] = [arr[baseIndex], arr[i]];
+            baseIndex++;
+        }
+    }
+    [arr[baseIndex], arr[end]] =  [arr[end], arr[baseIndex]]
+    return baseIndex;
+}
