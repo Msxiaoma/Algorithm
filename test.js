@@ -1,24 +1,13 @@
-const async1 = async () => {
-    console.log('async1')
-    setTimeout(() => {
-        console.log('timer1')
-    }, 2000);
-    await new Promise(resolve => {
-        console.log('promise1')
-    })
-    console.log('async end')
-    return 'async1 success'
-}
-console.log('script start')
-async1().then(res => {
-    console.log(res)
-})
-console.log('script end')
-Promise.resolve(1).then(2).then(3).catch(4).then(res => console.log(res))
-setTimeout(() => {
-    console.log('timer2')
-}, 1000);
+var b = 10 ;
+(function b()
+{ 
+    b = 20; 
+    console.log(b); 
+})(); 
 
+console.log(b); 
+
+// function b 
 
 // 'script start'
 // 'async1'
