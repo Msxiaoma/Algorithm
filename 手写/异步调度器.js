@@ -12,8 +12,6 @@ class Scheduler {
     }
     add(fn) {
         return new Promise((resolve) => {
-            console.log('fn', fn)
-            console.log('resolve', resolve)
             fn.resolve = resolve;
             if(this.runTasks.length < this.num) {
                 this.run(fn)
