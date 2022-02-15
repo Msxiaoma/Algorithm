@@ -1,13 +1,13 @@
 function ListNode(val, next) {
-    this.val = (val===undefined ? 0 : val)
-    this.next = (next===undefined ? null : next)
+    this.val = (val === undefined ? 0 : val)
+    this.next = (next === undefined ? null : next)
 }
 
 function createList(arr) {
     let head = new ListNode(arr[0]);
     let cur = head;
     for(let i = 1; i < arr.length; i++) {
-       cur.next =  new ListNode(arr[i]);
+       cur.next = new ListNode(arr[i]);
        cur = cur.next;
     }
     return head;
