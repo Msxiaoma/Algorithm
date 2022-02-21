@@ -3,19 +3,19 @@
 // 第一种继承，原型继承
 
 // 1. 原型链继承： 缺点：1. 每个实例对引用类型的属性的修改都会影响其他实例； 2. 无法像父类传参
-// function Parent() {
-//     this.name = ['parent']
-//     this.age = '12'
-// }
-// Parent.prototype.getName = function() {
-//     console.log('name', name);
-//     return this.name;
-// }
-// function Son() {}
-// Son.prototype = new Parent();
+function Parent() {
+    this.name = ['parent']
+    this.age = '12'
+}
+Parent.prototype.getName = function() {
+    console.log('name', name);
+    return this.name;
+}
+function Son() {}
+Son.prototype = new Parent();
 
-// let son1 = new Son();
-// let son2 = new Son();
+let son1 = new Son();
+let son2 = new Son();
 
 // console.log('son1.name', son1.name);
 // son1.name.push('hhh')
@@ -24,17 +24,17 @@
 
 // 2. 构造函数继承： 无法复用父类的方法，每一次实例化子类都要执行一次父类的方法
 
-// function Parent(name) {
-//     this.name = name;
-// }
-// function Son(name) {
-//     Parent.call(this, name);
-// }
+function Parent(name) {
+    this.name = name;
+}
+function Son(name) {
+    Parent.call(this, name);
+}
 
-// let son3 = new Son('son3');
-// let son4 = new Son('son4');
-// console.log('son3', son3);
-// console.log('son4', son4)
+let son3 = new Son('son3');
+let son4 = new Son('son4');
+console.log('son3', son3);
+console.log('son4', son4)
 
 // 3. 组合继承（原型链继承+构造函数继承）: 缺点：需要执行两次父类的构造函数
 function Parent(name) {

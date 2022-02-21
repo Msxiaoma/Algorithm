@@ -19,12 +19,41 @@
 
     <!-- Don't use this in production: -->
     <!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
-    <script src="./手写/手写继承.js"></script>
+    <!-- <script src="./test/10.列表转树.js"></script> -->
 
 </head>
 <body>
     <div id="root"></div>
     <script>
+        let data = [
+            { id: 1, parentId: 0},
+            { id: 2, parentId: 0},
+            { id: 3, parentId: 1},
+            { id: 4, parentId: 2},
+            { id: 5, parentId: 1},
+            { id: 6, parentId: 5},
+            { id: 7, parentId: 3},
+        ]
+        function listToTree(data) {
+            let temp = {};   
+            let treeData = [];
+            for (let i = 0; i < data.length; i++) {
+                temp[data[i].id] = data[i];
+            }
+            console.log('temp-------', temp);
+            for (let i in temp) {
+                if (+temp[i].parentId != 0) {
+                if (!temp[temp[i].parentId].children) {
+                    temp[temp[i].parentId].children = [];
+                }
+                temp[temp[i].parentId].children.push(temp[i]);
+                } else {
+                treeData.push(temp[i]);
+                }
+            }
+            return treeData;
+        }
+        console.log(listToTree(data))
     //  function fn(){
     //     console.log('this', this)  // window
     //     var name = "hello"
@@ -40,19 +69,19 @@
     // fn()  // window
 
 
-    let number = 42;
-    function printNumber() {
-        console.log(number);
-    }
-    function log() {
-        let number = 54;
-        // function printNumber() {
-        //   console.log(number);
-        // }
-        printNumber();
-    }
+    // let number = 42;
+    // function printNumber() {
+    //     console.log(number);
+    // }
+    // function log() {
+    //     let number = 54;
+    //     // function printNumber() {
+    //     //   console.log(number);
+    //     // }
+    //     printNumber();
+    // }
 
-    log();
+    // log();
 
     </script>
      <!-- <script type="text/babel" src="React/event.js"></script> -->

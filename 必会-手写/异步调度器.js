@@ -37,7 +37,7 @@ const timeout = (time) => new Promise(resolve => {
 	setTimeout(resolve, time);
 })
 
-const scheduler = new Scheduler(4);
+const scheduler = new Scheduler(2);
 
 const addTask = (time, order) => {
     console.log('order', order);

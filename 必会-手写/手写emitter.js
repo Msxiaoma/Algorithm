@@ -21,7 +21,6 @@ class Emmiter{
         const queue = this.events[event] || []  // 一个事件可以绑定个函数
         queue.push(fn);
         this.events[event] = queue;
-        return this;
     }
     /**
         * 触发事件
@@ -32,7 +31,7 @@ class Emmiter{
     */
     emit(event, ...args) {
         const listeners = this.event[event] || [];
-        callbacks.forEach(cb => cb(...args));
+        listeners.forEach(cb => cb(...args));
     }
      /**
         * 取消事件

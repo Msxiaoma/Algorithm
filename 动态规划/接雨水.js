@@ -7,7 +7,7 @@ var trap = function(height) {
         for(let j = i; j > -1; j--){
             left = Math.max(height[j], left);
         }
-        for(let k = i; k < height.length; i++){
+        for(let k = i; k < height.length; k++){
             right = Math.max(height[k], right);
         }
         count += Math.min(left, right) - height[i]

@@ -5,7 +5,7 @@ const a = [2,3,4,5,6,7,8]
 // 1. 随机排序， sort + Math.random 生成的随机数是 0，1之间，不包含 1
 function random(a) {
     return a.sort(() => {
-        Math.random() - 0.5
+        return Math.random() - 0.5;
     })
 }
 
