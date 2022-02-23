@@ -12,6 +12,7 @@ Promise.all = function(arr = []) {
                     resolve(res);
                 } else {
                     res[i] = res;
+                    flag ++;
                 }
             }, err => {
                 reject(err)

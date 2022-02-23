@@ -6,7 +6,7 @@
 function maxDeep(params) {
    if(params instanceof Object || params instanceof Array) {
         let depth = 1
-        return getDep(params, depth)
+        return getDep(params, depth);
    } else {
        return 1
    }
@@ -14,11 +14,11 @@ function maxDeep(params) {
 function getDep(obj, depth) {
     let maxDep = depth;
     if(!Object.keys(obj).length) {
-        return maxDep
+        return depth;
     }
     Object.keys(obj).forEach(key => {
-       maxDep = Math.max(getDep(obj[key], depth + 1), depth)
+       maxDep = Math.max(getDep(obj[key], depth + 1), maxDep)
     });
-    return maxDep
+    return maxDep;
 }
-console.log(maxDeep([1,2,3, [1,2], [1,[4]]] ))
+console.log(maxDeep({"test": {a: 3}}))

@@ -11,6 +11,6 @@ let A = (function A(){
      return f
 })()
 
-A()
-A()
-A()
+// A()
+// A()
+// A()

@@ -30,9 +30,10 @@ function listToTree(data) {
     for(let i = 0; i < data.length; i++) {
         temp[data[i].id] = data[i];
     }
+    console.log('temp', temp);
     for(let i in temp) {
         if(temp[i].parentId != 0) {
-            if(!temp[i].children) {
+            if(!temp[temp[i].parentId].children) {
                 temp[temp[i].parentId].children = [];
             } 
            temp[temp[i].parentId].children.push(temp[i]) 

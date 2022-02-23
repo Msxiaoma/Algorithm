@@ -1,4 +1,4 @@
-let tree = [{"id":1,"parentId":0,"children":[{"id":5,"parentId":1,"children":[{"id":6,"parentId":5}]}]},{"id":2,"parentId":0,"children":[{"id":4,"parentId":2}]}];
+let tree = [{"id":1,"parentId":0,"children":[{"id":3,"parentId":1,"children":[{"id":7,"parentId":3}]},{"id":5,"parentId":1,"children":[{"id":6,"parentId":5}]}]},{"id":2,"parentId":0,"children":[{"id":4,"parentId":2}]}];
 // 转成
 // [
 //   { id: 3, parentId: 1},
