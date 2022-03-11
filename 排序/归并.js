@@ -12,7 +12,7 @@ function mergeSort(arr) {
 
 function merge(left, right) {
     const res = [];
-    while(left.length > 0 && right.length) {
+    while(left.length && right.length ) {
         if(left[0] < right[0]) {
             res.push(left.shift());
         } else {

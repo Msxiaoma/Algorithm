@@ -15,11 +15,11 @@ function getBaseIndex(arr, start, end) {
     let baseIndex = start;
    for(let i = start; i < end; i++) {
        if(arr[i] < baseValue) {
-           [arr[i], arr[baseIndex]] = [arr[baseIndex], arr[i]];
-           baseIndex++
+           [arr[i], arr[baseIndex]] = [arr[baseIndex],arr[i]]
+           baseIndex ++;
        }
    }
-   // 摆放基准值的位置
+   // 摆放基准值的位置s
    [arr[baseIndex], arr[end]] = [arr[end], arr[baseIndex]];
    return baseIndex;
 }

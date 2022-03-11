@@ -87,3 +87,9 @@ function curry (fn) {
     }
   }
 }
+
+function multiFn(a, b, c) {
+    return a * b * c;
+}
+
+var multi = curry(multiFn);

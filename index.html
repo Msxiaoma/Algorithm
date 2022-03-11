@@ -6,12 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
         #root{
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 10px solid #000;
+            width: 1000px;
+            display: flex;
+            height: 200px;
+            background-color: bisque;
+        }
+        .left{
+            flex: 2 0 100px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+        .right{
+            flex: 3 0 400px;
+            height: 200px;
+            background-color: aqua;
         }
     </style>
     <!-- <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
@@ -23,67 +38,40 @@
 
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+       <div class="left"></div>
+       <button class="right"></div>
+    </div>
     <script>
-        let data = [
-            { id: 1, parentId: 0},
-            { id: 2, parentId: 0},
-            { id: 3, parentId: 1},
-            { id: 4, parentId: 2},
-            { id: 5, parentId: 1},
-            { id: 6, parentId: 5},
-            { id: 7, parentId: 3},
-        ]
-        function listToTree(data) {
-            let temp = {};   
-            let treeData = [];
-            for (let i = 0; i < data.length; i++) {
-                temp[data[i].id] = data[i];
+    const deepGet = (obj, prop) => {
+        const keyArr = prop.split('.').map(key => key);
+        const reducer = (acc, cur) => {
+            const objKey = cur.includes('[') && cur.replace(/\[[0-9]\]$/gi, '');
+            console.log('objKey', objKey)
+            if (Array.isArray(acc[objKey])) {
+            cur = cur.replace(/[^0-9]/gi, '');
+            console.log('cur', cur)
+            return acc[objKey][cur] || {};
             }
-            console.log('temp-------', temp);
-            for (let i in temp) {
-                if (+temp[i].parentId != 0) {
-                if (!temp[temp[i].parentId].children) {
-                    temp[temp[i].parentId].children = [];
-                }
-                temp[temp[i].parentId].children.push(temp[i]);
-                } else {
-                treeData.push(temp[i]);
-                }
-            }
-            return treeData;
+            return acc[cur] ? acc[cur] : {};
         }
-        console.log(listToTree(data))
-    //  function fn(){
-    //     console.log('this', this)  // window
-    //     var name = "hello"
-    //     var obj = {
-    //         name: 'aaa',
-    //         log: ()=> {
-    //             console.log('this', this)
-    //             console.log(this.name)
-    //         }
-    //     }
-    //     obj.log();  // 箭头函数，没有自己的 this，指的是外层的 this, 所以也是 window
-    // }
-    // fn()  // window
 
-
-    // let number = 42;
-    // function printNumber() {
-    //     console.log(number);
-    // }
-    // function log() {
-    //     let number = 54;
-    //     // function printNumber() {
-    //     //   console.log(number);
-    //     // }
-    //     printNumber();
-    // }
-
-    // log();
-
+        const result = keyArr.reduce(reducer, obj);
+        console.log('result', result)
+        return Object.keys(result).length ? result : undefined;
+     }
+    let value =  deepGet({
+    school: {
+        students: [
+        { name: 'Tomy' },
+        { name: 'Lucy' },
+        ],
+    }
+    }, 'school.students[1].name') // => 'Tomy'
+    console.log('value', value)
     </script>
      <!-- <script type="text/babel" src="React/event.js"></script> -->
 </body>
 </html>
+
+'students[1]'.replace(/\[[0-9]\]$/gi, '')

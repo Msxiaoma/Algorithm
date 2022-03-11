@@ -28,7 +28,6 @@ function flat(arr, deep = 1) {
 
 //3. 堆栈
 function forFlat(arr) {
-    const stack = []
     const result = []
     while (arr.length) {
         let top = arr.pop()
